@@ -49,18 +49,21 @@ jobs:
       - name: Print current directory
         run: pwd
 
-      - name: Run dbt seed 
-        run: |
-          cd dbt_transformation
-          dbt seed 
       - name: Run dbt model 
         run: |
           cd dbt_transformation
           dbt run 
+          
       - name: Test dbt model
         run: |
           cd dbt_transformation
           dbt test 
+
+      - name: Run dbt seed 
+        run: |
+          cd dbt_transformation
+          dbt seed 
+
       - name: Generate dbt documentation
         run: |
           cd dbt_transformation
