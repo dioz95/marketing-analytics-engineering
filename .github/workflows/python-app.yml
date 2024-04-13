@@ -12,8 +12,6 @@ env:
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ vars.DBT_GOOGLE_BIGQUERY_DATASET }}
   DBT_GOOGLE_BIGQUERY_KEYFILE: ./.gcloud/dbt-service-account.json
 
-  KEYFILE_CONTENTS: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
-
 jobs: 
   dbt_orchestration: 
     name: dbt_orchestration
@@ -30,8 +28,10 @@ jobs:
       - name: Authenticate using service account
         run: |
           mkdir -p ./.gcloud/ 
-          echo "$KEYFILE_CONTENTS" > $DBT_GOOGLE_BIGQUERY_KEYFILE
+          echo "$KEYFILE_CONTENTS" > /.gcloud/dbt-service-account.json
         shell: bash
+        env: 
+            KEYFILE_CONTENTS: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
 
       - name: Install python dependencies
         run: |
