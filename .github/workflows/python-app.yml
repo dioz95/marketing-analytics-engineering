@@ -45,6 +45,10 @@ jobs:
         run: |
           cd ./dbt_transformation
           dbt deps 
+
+      - name: Print current directory
+        run: pwd
+        
       - name: Run dbt seed 
         run: |
           dbt seed 
