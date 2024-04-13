@@ -52,24 +52,24 @@ jobs:
       - name: Run dbt build 
         run: |
           cd dbt_transformation
-          dbt build 
+          dbt build --target dev
 
       - name: Run dbt model 
         run: |
           cd dbt_transformation
-          dbt run 
+          dbt run --target dev
 
       - name: Test dbt model
         run: |
           cd dbt_transformation
-          dbt test 
+          dbt test --target dev
 
       - name: Run dbt seed 
         run: |
           cd dbt_transformation
-          dbt seed 
+          dbt seed --target dev
 
       - name: Generate dbt documentation
         run: |
           cd dbt_transformation
-          dbt docs generate
+          dbt docs generate --target dev
