@@ -4,7 +4,7 @@ dbt_transformation:
       dataset: "{{ env_var('DBT_GOOGLE_BIGQUERY_DATASET') }}"
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
+      keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE').split('\\\\n') | join('\n') }}"
       location: EU
       method: service-account
       priority: interactive
