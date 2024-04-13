@@ -38,8 +38,10 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Print current directory
-        run: pwd
+      - name: Run dbt debug
+        run: |
+          cd dbt_transformation
+          dbt debug
 
       - name: Install dbt dependencies
         run: |
