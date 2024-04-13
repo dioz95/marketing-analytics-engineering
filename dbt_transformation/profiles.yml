@@ -1,14 +1,14 @@
 dbt_transformation:
   outputs:
     dev:
-      dataset: "{{ var('DBT_GOOGLE_BIGQUERY_DATASET') }}"
+      dataset: "{{ env_var('DBT_GOOGLE_BIGQUERY_DATASET') }}"
       job_execution_timeout_seconds: 300
       job_retries: 1
-      keyfile: "{{ var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
+      keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
       location: EU
       method: service-account
       priority: interactive
-      project: "{{ var('DBT_GOOGLE_PROJECT') }}"
+      project: "{{ env_var('DBT_GOOGLE_PROJECT') }}"
       threads: 32
       type: bigquery
   target: dev
