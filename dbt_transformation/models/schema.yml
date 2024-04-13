@@ -1,0 +1,165 @@
+version: 2
+
+models: 
+  - name: dim_customers
+    description: Customers dimension table with the latest customer informations
+    columns:
+      - name: customer_id
+        description: primary key for the customers 
+        tests: 
+          - unique
+          - not_null
+      - name: customer_name_hashed
+        description: customers' name hased by MD5 algorithm
+        tests: 
+          - not_null 
+      - name: gender_hashed 
+        description: gender of the customers hashed by MD5 algorithm 
+      - name: phone_number_hashed
+        description: the most reccent phone number of the customers hashed by MD5 algorithm 
+      - name: email_hashed
+        description: the most reccent email of the customers hashed by MD5 algorithm 
+      - name: city_hashed
+        description: the most reccent city of the customers hashed by MD5 algorithm 
+  - name: dim_product_categories
+    description: product categories dimension table 
+    columns: 
+      - name: product_category_id
+        description: unique id of the product categories table, resulted from the hashed surrogate ky.
+        tests:  
+          - not_null 
+          - unique 
+      - name: product_category 
+        description: name of the product category
+        tests: 
+          - not_null
+          - accepted_values:
+              values: ['FITNESS FUSION GEAR',
+                      'COZY HOME ESSENTIALS',
+                      "FASHIONISTA'S CLOSET",
+                      'TECH INNOVATIONS HUB',
+                      "ADVENTURE SEEKER'S OUTFIT",
+                      'CULINARY DELIGHTS EMPORIUM',
+                      'SUSTAINABLE LIVING SOLUTIONS'
+                      ]
+  - name: fct_company_reviews 
+    description: fact table contains ratings given by each customer about their impression to the company 
+    columns: 
+      - name: company_review_id
+        description: surrogate key created by the concatenation of customer_id and rating field 
+        tests: 
+          - not_null 
+          - unique 
+      - name: customer_id 
+        description: customer id that gives the ratings to the company
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: rating 
+        description: numerical value represents the rating given by the customer 
+        tests: 
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1.0
+              max_value: 5.0
+  - name: fct_transactions
+    description: fact table contains the total of transactions made by each customer in one order 
+    columns: 
+      - name: transaction_id
+        description: primary key for the fact transaction table 
+        tests: 
+          - not_null 
+          - unique 
+      - name: transaction_date
+        description: datetime when each transaction is performed  
+      - name: customer_id
+        description: customer id that performs the transaction
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+      - name: product_category_id 
+        description: id of the product category of the items purchased by the customer
+        tests: 
+          - not_null 
+          - relationships:
+              to: ref('dim_product_categories')
+              field: product_category_id
+      - name: total_paid
+        description: total amount paid by the customers 
+      - name: rating 
+        description: ratings given by each customer in each transaction regarding the customers' satisfaction to the associated transaction.
+        tests: 
+          - dbt_expectations.expect_column_values_to_be_between:
+              max_value: 5.0
+  - name: fct_marketing_campaign
+    description: Record about marketing campaign and the associated budget spent by the company
+    columns:
+      - name: campaign_name
+        description: name of the marketing campaign
+        tests: 
+          - unique
+          - not_null
+      - name: start_date
+        description: start date of the associated marketing campaign
+      - name: end_date
+        description: end date of the associated marketing campaign
+      - name: marketing_budget
+        description: total amount spent for the campaign
+  - name: scd_customers
+    description: Snapshots of raw_customers data, for capturing changes of the customers information
+    columns:
+      - name: customer_id
+        description: unique id of each customer 
+        tests: 
+          - not_null
+      - name: customer_name_hashed
+        description: customers' name hased by MD5 algorithm
+        tests: 
+          - not_null 
+      - name: gender_hashed 
+        description: gender of the customers hashed by MD5 algorithm 
+      - name: phone_number_hashed
+        description: the most reccent phone number of the customers hashed by MD5 algorithm 
+      - name: email_hashed
+        description: the most reccent email of the customers hashed by MD5 algorithm 
+      - name: city_hashed
+        description: the most reccent city of the customers hashed by MD5 algorithm 
+      - name: dbt_scd_id
+        description: unique id of the scd_customers snapshot table 
+      - name: dbt_updated_at
+        description: timestamp that indicates the latest update of the rows
+      - name: dbt_valid_from
+        description: start timestamp of the rows validity
+      - name: dbt_valid_to
+        description: end timestamp of the rows validity. NULL indicating the latest valid row.
+  - name: metrics_customers_recency
+    description: A table contains recency metrics of each customers
+    columns:
+      - name: customer_id
+        description: unique id of the customer
+      - name: customer_name_hashed
+        description: customers' name hashed by MD5 algorithm 
+      - name: customer_recency
+        description: the difference (in day) between the latest date of customer's transaction and the latest day date of the transaction recorded in the fct_transactions table.
+  - name: metrics_customers_frequency
+    description: A table contains frequency metrics of each customers
+    columns:
+      - name: customer_id
+        description: unique id of the customer
+      - name: customer_name_hashed
+        description: customers' name hashed by MD5 algorithm 
+      - name: customer_frequency
+        description: count of transaction occured per customer
+  - name: metrics_customers_monetary
+    description: A table contains monetary metrics of each customers
+    columns:
+      - name: customer_id
+        description: unique id of the customer
+      - name: customer_name_hashed
+        description: customers' name hashed by MD5 algorithm 
+      - name: customer_monetary
+        description: sum of total revenue per customer

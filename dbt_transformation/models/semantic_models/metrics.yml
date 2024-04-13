@@ -1,0 +1,43 @@
+---
+metrics:
+  - name: count_product_category
+    type: SIMPLE
+    type_params:
+      measure: count_product_category
+    label: "Count Product Category"
+  - name: total_revenue
+    type: SIMPLE
+    type_params:
+      measure: 
+        name: total_paid
+        fill_nulls_with: 0
+        join_to_timespine: true
+    label: "Total Revenue"
+  - name: total_marketing_budget
+    type: SIMPLE 
+    type_params: 
+      measure: marketing_budget 
+    label: "Total Marketing Budget" 
+  - name: marketing_budget_revenue_ratio 
+    type: RATIO 
+    type_params: 
+      numerator: total_marketing_budget
+      denominator: total_revenue
+    label: "Marketing Budget To Revenue Ratio"
+  - name: count_transactions
+    type: SIMPLE
+    type_params:
+      measure: count_transactions
+    label: "Count Transactions"
+  - name: count_transacting_customers
+    type: SIMPLE
+    type_params:
+      measure: count_transacting_customers
+    label: "Count Transacting Customers"
+  - name: cumulative_revenue_mtd   #For this metric, we use a monthly grain-to-date 
+    label: Total Revenue (MTD)
+    description: The month-to-date value of all orders
+    type: cumulative
+    type_params:
+      measure: total_paid
+      grain_to_date: month

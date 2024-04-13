@@ -1,0 +1,102 @@
+semantic_models:
+  - name: fct_transactions
+    description: |
+      this table represents aggregated transaction has been made by customer.
+    defaults:
+      agg_time_dimension: transaction_date
+    model: ref('fct_transactions')
+    entities:
+      - name: transaction
+        type: primary
+        expr: transaction_id
+      - name: customer
+        type: foreign
+        expr: customer_id
+      - name: product_category_id
+        type: foreign
+        expr: product_category_id
+    measures:
+      - name: total_paid
+        description: The total Rupiah (IDR) value of the transaction.
+        agg: SUM
+      - name: count_transactions
+        description: The total number of transactions.
+        expr: "1"
+        agg: SUM
+      - name: count_transacting_customers
+        description: The distinct count of customers transacting on any given day.
+        expr: customer_id
+        agg: COUNT_DISTINCT
+      - name: count_product_category
+        description: The distinct count of product category.
+        expr: product_category_id
+        agg: COUNT_DISTINCT
+    dimensions:
+      - name: transaction_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: is_transaction_amount_below_average
+        type: categorical 
+        expr: |
+          CASE
+            WHEN total_paid < AVG(total_paid) OVER() THEN 1
+            ELSE 0
+          END
+  - name: dim_customers
+    description: |
+      this table represents the updated customers' data (based on the scd_customers model).
+    model: ref('dim_customers')
+    entities:
+      - name: customer
+        type: primary
+        expr: customer_id
+    dimensions:
+      - name: customer_name_hashed
+        description: Hashed customer name.
+        type: categorical
+      - name: gender_hashed
+        description: Hashed gender of the customer.
+        type: categorical
+      - name: phone_number_hashed
+        description: Hashed phone number of the customer.
+        type: categorical
+      - name: email_hashed
+        description: Hashed email of the customer.
+        type: categorical
+      - name: city_hashed
+        description: Hashed city of the customer.
+        type: categorical
+  - name: fct_marketing_campaign
+    description: Record about marketing campaign and the associated budget spent by the company
+    defaults:
+      agg_time_dimension: start_date
+    model: ref('fct_marketing_campaign')
+    entities: 
+      - name: campaign_name
+        type: primary 
+    measures:
+      - name: marketing_budget
+        description: The total Rupiah (IDR) value of the marketing budget.
+        agg: SUM
+    dimensions:
+      - name: start_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: end_date
+        type: time
+        type_params:
+          time_granularity: day
+  - name: dim_product_categories
+    description: |
+      This table represents the list of product categories available for sale.
+    model: ref('dim_product_categories')
+    entities:
+      - name: product_category_id
+        type: primary
+        expr: product_category_id
+    dimensions: 
+      - name: product_category
+        description: Name of the product category.
+        type: categorical

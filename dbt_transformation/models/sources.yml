@@ -1,0 +1,74 @@
+version: 2
+
+sources:
+  - name: loyal-saga-41671
+    dataset: marketing_analytics1234
+    tables:
+      - name: raw_transactions
+        identifier: transactions
+        columns:
+          - name: transaction_id
+            tests:  
+              - unique
+              - not_null 
+          - name: transaction_date 
+            tests: 
+              - not_null 
+          - name: buyer_name
+          - name: product_category
+            test: 
+              - not_null
+              - dbt_expectations.expect_column_distinct_count_to_equal:
+                  value: 7
+          - name: total_price
+            tests:
+              - dbt_expectations.expect_column_values_to_match_regex:
+                  regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b" 
+                  config:
+                    error_if: ">17"
+          - name: rating 
+            tests: 
+              - dbt_expectations.expect_column_values_to_be_between:
+                  max_value: 5.0
+      - name: raw_customers
+        identifier: customers
+        columns:
+          - name: customer_id 
+            tests: 
+              - unique 
+              - not_null 
+          - name: customer_name 
+            tests: 
+              - not_null 
+          - name: gender 
+            tests: 
+              - dbt_expectations.expect_column_distinct_count_to_equal:
+                  value: 2
+          - name: phone_number
+            tests: 
+              - not_null 
+          - name: email
+            tests:
+              - dbt_expectations.expect_column_values_to_match_regex:
+                  regex: "\\\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\\.[A-Z|a-z]{2,}\\\\b" 
+          - name: city 
+            test: 
+              - not_null
+      - name: raw_company_reviews
+        identifier: company_reviews
+        columns: 
+          - name: reviewer_name 
+            tests: 
+              - not_null 
+          - name: rating
+            tests:
+              - dbt_expectations.expect_column_values_to_be_between:
+                  min_value: 1.0
+                  max_value: 5.0
+      - name: raw_marketing_campaign
+        identifier: seeds_marketing_campaign
+        columns:
+          - name: campaign_name
+            tests:  
+              - unique
+              - not_null

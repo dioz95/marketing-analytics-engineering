@@ -1,0 +1,10 @@
+version: 2
+
+seeds: 
+  - name: seeds_marketing_campaign 
+    config: 
+      column_types:
+        campaign: STRING
+        start: DATE 
+        end: DATE 
+        budget: FLOAT
