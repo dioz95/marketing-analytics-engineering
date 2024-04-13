@@ -7,7 +7,7 @@ on:
   schedule:
     - cron: "0 0 * * *"
 env:
-  # DBT_PROFILES_DIR: ./
+  DBT_PROFILES_DIR: ./dbt_transformation
   DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
   DBT_GOOGLE_BIGQUERY_KEYFILE: ./.gcloud/dbt-service-account.json
