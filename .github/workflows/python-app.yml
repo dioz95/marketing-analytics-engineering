@@ -43,6 +43,7 @@ jobs:
 
       - name: Install dbt dependencies
         run: |
+          cd dbt_transformation
           dbt deps 
 
       - name: Print current directory
@@ -50,7 +51,7 @@ jobs:
 
       - name: Run dbt seed 
         run: |
-          cd ./dbt_transformation
+          cd dbt_transformation
           dbt seed 
       - name: Run dbt model 
         run: |
