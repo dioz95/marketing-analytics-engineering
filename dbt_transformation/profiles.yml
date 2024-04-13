@@ -2,7 +2,7 @@ dbt_transformation:
   outputs:
     dev:
       dataset: "{{ env_var('DBT_GOOGLE_BIGQUERY_DATASET') }}"
-      job_execution_timeout_seconds: 300
+      timeout_seconds: 300
       job_retries: 1
       keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
       location: EU
