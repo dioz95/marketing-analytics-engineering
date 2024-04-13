@@ -47,7 +47,6 @@ jobs:
           dbt deps 
       - name: Run dbt seed 
         run: |
-          cd ./dbt_transformation
           dbt seed 
       - name: Run dbt model 
         run: |
