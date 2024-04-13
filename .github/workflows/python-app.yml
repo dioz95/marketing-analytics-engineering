@@ -51,13 +51,10 @@ jobs:
           dbt seed 
       - name: Run dbt model 
         run: |
-          cd ./dbt_transformation
           dbt run 
       - name: Test dbt model
         run: |
-          cd ./dbt_transformation 
           dbt test 
       - name: Generate dbt documentation
         run: |
-          cd ./dbt_transformation 
           dbt docs generate
