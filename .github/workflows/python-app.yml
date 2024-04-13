@@ -27,7 +27,7 @@ jobs:
 
       - name: Authenticate using service account
         run: |
-          mkdir -p ./.gcloud/
+          mkdir -p ./dbt_transformation/.gcloud/
           echo '$KEYFILE' > ./.gcloud/dbt-service-account.json
         shell: bash
         env:
