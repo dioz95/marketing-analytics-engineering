@@ -30,7 +30,7 @@ jobs:
       - name: Authenticate using service account
         run: |
           mkdir -p "$(dirname $DBT_GOOGLE_BIGQUERY_KEYFILE)" 
-          echo "$KEYFILE_CONTENTS" > $DBT_GOOGLE_KEYFILE
+          echo "$KEYFILE_CONTENTS" > $DBT_GOOGLE_BIGQUERY_KEYFILE
 
       - name: Install python dependencies
         run: |
