@@ -1,0 +1,52 @@
+name: dbt_orchestration
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+env:
+  DBT_PROFILES_DIR: ./
+  DBT_GOOGLE_PROJECT: ${{ secrets.DBT_GOOGLE_PROJECT }}
+  DBT_GOOGLE_BIGQUERY_DATASET: ${{ secrets.DBT_GOOGLE_BIGQUERY_DATASET }}
+  DBT_GOOGLE_BIGQUERY_KEYFILE: ./.gcloud/dbt-service-account.json
+
+jobs: 
+  dbt_orchestration: 
+    name: dbt_orchestration
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Check out
+        uses: actions/checkout@master
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: "3.11.8"
+
+      - name: Authenticate using service account
+        run: 'echo "$KEYFILE" > ./.gcloud/dbt-service-account.json'
+        shell: bash
+        env:
+          KEYFILE: ${{secrets.DBT_GOOGLE_BIGQUERY_KEYFILE}}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          dbt deps 
+      
+      - name: Run dbt seed 
+        run: |
+          cd dbt_transformation
+          dbt seed 
+      - name: Run dbt model 
+        run: |
+          cd dbt_transformation
+          dbt run 
+      - name: Test dbt model
+        run: |
+          cd dbt_transformation 
+          dbt test 
+      - name: Generate dbt documentation
+        run: |
+          cd dbt_transformation 
+          dbt docs generate
