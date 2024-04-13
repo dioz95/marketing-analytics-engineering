@@ -16,7 +16,7 @@ jobs:
   
     steps:
       - name: Check out
-        uses: actions/checkout@master
+        uses: actions/checkout@main
 
       - uses: actions/setup-python@v1
         with:
