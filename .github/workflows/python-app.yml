@@ -49,11 +49,16 @@ jobs:
       - name: Print current directory
         run: pwd
 
+      - name: Run dbt build 
+        run: |
+          cd dbt_transformation
+          dbt build 
+
       - name: Run dbt model 
         run: |
           cd dbt_transformation
           dbt run 
-          
+
       - name: Test dbt model
         run: |
           cd dbt_transformation
