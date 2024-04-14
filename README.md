@@ -28,7 +28,7 @@ To deliver the request raised by the user, the data consultant decided to go wit
 - Building semantic layer to enforce the metrics consistency and reusability of each metrics
 - Developing data products:
   - Data Analys/Business Intelligence: _Marketing Executive Dashboard_
-  - Data Scientist: Customer RFM (Recency, Frequency, Monetary) Analysis
+  - Data Scientist: _Customer RFM (Recency, Frequency, Monetary) Analysis_
 - Code versioning and workflow orchestration using Git and GitHub Actions
 
 ## Project Structure
