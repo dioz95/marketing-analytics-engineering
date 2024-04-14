@@ -35,7 +35,7 @@ jobs:
 
       - name: See keyfile 
         run: |
-          cat /.gcloud/dbt-service-account.json
+          cat ./.gcloud/dbt-service-account.json
 
       # - name: Install python dependencies
       #   run: |
