@@ -34,13 +34,13 @@ models:
         tests: 
           - not_null
           - accepted_values:
-              values: ['FITNESS FUSION GEAR',
-                      'COZY HOME ESSENTIALS',
-                      "FASHIONISTA'S CLOSET",
-                      'TECH INNOVATIONS HUB',
-                      "ADVENTURE SEEKER'S OUTFIT",
-                      'CULINARY DELIGHTS EMPORIUM',
-                      'SUSTAINABLE LIVING SOLUTIONS'
+              values: ["FITNESS FUSION GEAR",
+                      "COZY HOME ESSENTIALS",
+                      "FASHIONISTA\\'S CLOSET",
+                      "TECH INNOVATIONS HUB",
+                      "ADVENTURE SEEKER\\'S OUTFIT",
+                      "CULINARY DELIGHTS EMPORIUM",
+                      "SUSTAINABLE LIVING SOLUTIONS"
                       ]
   - name: fct_company_reviews 
     description: fact table contains ratings given by each customer about their impression to the company 
@@ -163,3 +163,10 @@ models:
         description: customers' name hashed by MD5 algorithm 
       - name: customer_monetary
         description: sum of total revenue per customer
+
+  - name: seeds_marketing_campaign
+    columns:
+      - name: campaign
+        tests:  
+          - unique
+          - not_null

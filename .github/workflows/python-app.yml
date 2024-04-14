@@ -52,21 +52,21 @@ jobs:
         working-directory: ./dbt_transformation
         run: |
           dbt deps 
-
-      - name: Run dbt model 
+    
+      - name: Run dbt seed 
         working-directory: ./dbt_transformation
         run: |
-          dbt run --target dev
+          dbt seed --target dev
 
       - name: Test dbt model
         working-directory: ./dbt_transformation
         run: |
           dbt test --target dev
 
-      - name: Run dbt seed 
+      - name: Run dbt model 
         working-directory: ./dbt_transformation
         run: |
-          dbt seed --target dev
+          dbt run --target dev
 
       - name: Generate dbt documentation
         working-directory: ./dbt_transformation

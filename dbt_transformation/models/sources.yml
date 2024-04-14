@@ -25,6 +25,8 @@ sources:
               - dbt_expectations.expect_column_values_to_match_regex:
                   regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b" 
                   config:
+                  # there are 17 data that contains Rpnan, 
+                  # if the unmatched row <17, the test will result in warning
                     error_if: ">17"
           - name: rating 
             tests: 
@@ -65,10 +67,3 @@ sources:
               - dbt_expectations.expect_column_values_to_be_between:
                   min_value: 1.0
                   max_value: 5.0
-      - name: raw_marketing_campaign
-        identifier: seeds_marketing_campaign
-        columns:
-          - name: campaign_name
-            tests:  
-              - unique
-              - not_null
