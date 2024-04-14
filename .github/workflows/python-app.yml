@@ -10,7 +10,7 @@ env:
   DBT_PROFILES_DIR: ./
   DBT_GOOGLE_PROJECT: ${{ vars.DBT_GOOGLE_PROJECT }}
   DBT_GOOGLE_BIGQUERY_DATASET: ${{ vars.DBT_GOOGLE_BIGQUERY_DATASET }}
-  DBT_GOOGLE_BIGQUERY_KEYFILE: ./.gcloud/dbt_transformation/dbt-service-account.json
+  DBT_GOOGLE_BIGQUERY_KEYFILE: ./dbt_transformation/.gcloud/dbt-service-account.json
 
 jobs: 
   dbt_orchestration: 
@@ -40,8 +40,8 @@ jobs:
 
       - name: Debugging Output
         run: |
-          ls -al ./.gcloud/dbt_transformation
-          cat ./.gcloud/dbt_transformation/dbt-service-account.json
+          ls -al ./dbt_transformation/.gcloud/
+          cat ./dbt_transformation/.gcloud/dbt-service-account.json
 
       - name: Run dbt debug
         working-directory: ./dbt_transformation
