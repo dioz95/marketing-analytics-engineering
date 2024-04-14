@@ -31,7 +31,7 @@ jobs:
           echo "$KEYFILE_CONTENTS" > ./.gcloud/dbt-service-account.json
         shell: bash
         env: 
-            KEYFILE_CONTENTS: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
+            KEYFILE_CONTENTS: ${{ vars.DBT_GOOGLE_BIGQUERY_KEYFILE }}
 
       - name: Install python dependencies
         run: |
