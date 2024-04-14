@@ -40,8 +40,8 @@ jobs:
 
       - name: Debugging Output
         run: |
-          ls -al ./.gcloud
-          cat ./.gcloud/dbt-service-account.json
+          ls -al ./.gcloud/dbt_transformation
+          cat ./.gcloud/dbt_transformation/dbt-service-account.json
 
       - name: Run dbt debug
         working-directory: ./dbt_transformation
