@@ -1,0 +1,56 @@
+customer_id,customer_name,gender,phone_number,email,city
+0,Ava Johnson,Female,021-123456,ava.johnson@example.com,Bali
+1,Lucas Bennett,Male,022-234567,lucas.bennett@example.com,West Java
+2,Mia Rodriguez,Female,023-345678,mia.rodriguez@example.com,Outside Indonesia
+3,Noah Thompson,Male,024-456789,noah.thompson@example.com,Jakarta
+4,Olivia Foster,Female,025-567890,olivia.foster@example.com,West Java
+5,Liam Carter,Male,026-678901,liam.carter@example.com,Bali
+6,Sophia Turner,Female,027-789012,sophia.turner@example.com,West Java
+7,Jackson White,Male,028-890123,jackson.white@example.com,Bali
+8,Emma Murphy,Female,029-901234,emma.murphy@example.com,Bali
+9,Aiden Harris,Male,030-012345,aiden.harris@example.com,Bali
+10,Isabella Parker,Female,031-123456,isabella.parker@example.com,West Java
+11,Oliver Lewis,Male,032-234567,oliver.lewis@example.com,Jakarta
+12,Sophia Collins,Female,033-345678,sophia.collins@example.com,Outside Indonesia
+13,Ethan Adams,Male,034-456789,ethan.adams@example.com,Bali
+14,Amelia Martin,Female,035-567890,amelia.martin@example.com,West Java
+15,Lucas Ward,Male,036-678901,lucas.ward@example.com,West Java
+16,Harper Baker,Female,037-789012,harper.baker@example.com,West Java
+17,Logan Mitchell,Male,038-890123,logan.mitchell@example.com,Jakarta
+18,Ava Scott,Female,039-901234,ava.scott@example.com,West Java
+19,Liam Taylor,Male,040-012345,liam.taylor@example.com,Outside Indonesia
+20,Mia Wright,Female,041-123456,mia.wright@example.com,Bali
+21,Jackson King,Male,042-234567,jackson.king@example.com,Outside Indonesia
+22,Emma Hayes,Female,043-345678,emma.hayes@example.com,West Java
+23,Noah Hall,Male,044-456789,noah.hall@example.com,Jakarta
+24,Isabella Wright,Female,045-567890,isabella.wright@example.com,Bali
+25,Aiden Hill,Male,046-678901,aiden.hill@example.com,West Java
+26,Olivia Adams,Female,047-789012,olivia.adams@example.com,Jakarta
+27,Oliver Rogers,Male,048-890123,oliver.rogers@example.com,Bali
+28,Sophia Brooks,Female,049-901234,sophia.brooks@example.com,West Java
+29,Harper Evans,Male,050-012345,harper.evans@example.com,Jakarta
+30,Lucas Nelson,Female,051-123456,lucas.nelson@example.com,Bali
+31,Mia Watson,Male,052-234567,mia.watson@example.com,West Java
+32,Liam Gray,Female,053-345678,liam.gray@example.com,Jakarta
+33,Emma Cooper,Male,054-456789,emma.cooper@example.com,Bali
+34,Jackson Rivera,Female,055-567890,jackson.rivera@example.com,Outside Indonesia
+35,Isabella Price,Male,056-678901,isabella.price@example.com,Jakarta
+36,Noah Myers,Female,057-789012,noah.myers@example.com,West Java
+37,Ava Bennett,Male,058-890123,ava.bennett@example.com,Jakarta
+38,Oliver Moore,Female,059-901234,oliver.moore@example.com,West Java
+39,Harper Cook,Male,060-012345,harper.cook@example.com,West Java
+40,Aiden Coleman,Female,061-123456,aiden.coleman@example.com,Outside Indonesia
+41,Sophia Nelson,Male,062-234567,sophia.nelson@example.com,Outside Indonesia
+42,Logan Simmons,Female,063-345678,logan.simmons@example.com,Outside Indonesia
+43,Mia Foster,Male,064-456789,mia.foster@example.com,Jakarta
+44,Liam Bryant,Female,065-567890,liam.bryant@example.com,Jakarta
+45,Emma Richardson,Male,066-678901,emma.richardson@example.com,Jakarta
+46,Jackson Morris,Female,067-789012,jackson.morris@example.com,West Java
+47,Isabella Sullivan,Male,068-890123,isabella.sullivan@example.com,Bali
+48,Noah Reed,Female,069-901234,noah.reed@example.com,Outside Indonesia
+49,Ava Henderson,Male,070-012345,ava.henderson@example.com,Outside Indonesia
+50,Olivia Perry,Female,071-123456,olivia.perry@example.com,Bali
+51,Harper James,Male,072-234567,harper.james@example.com,Outside Indonesia
+52,Aiden Alexander,Female,073-345678,aiden.alexander@example.com,Jakarta
+53,Mia Kelly,Male,074-456789,mia.kelly@example.com,Jakarta
+54,Nathan Turner,Female,075-567890,nathan.turner@example.com,Bali
