@@ -44,6 +44,7 @@ jobs:
 
       - name: Run dbt debug
         run: |
+          cd dbt_transformation
           dbt debug
 
       # - name: Install dbt dependencies
