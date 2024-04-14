@@ -48,35 +48,27 @@ jobs:
         run: |
           dbt debug
 
-      # - name: Install dbt dependencies
-      #   run: |
-      #     cd dbt_transformation
-      #     dbt deps 
+      - name: Install dbt dependencies
+        working-directory: ./dbt_transformation
+        run: |
+          dbt deps 
 
-      # - name: Print current directory
-      #   run: pwd
+      - name: Run dbt model 
+        working-directory: ./dbt_transformation
+        run: |
+          dbt run --target dev
 
-      # - name: Run dbt build 
-      #   run: |
-      #     cd dbt_transformation
-      #     dbt build --target dev
+      - name: Test dbt model
+        working-directory: ./dbt_transformation
+        run: |
+          dbt test --target dev
 
-      # - name: Run dbt model 
-      #   run: |
-      #     cd dbt_transformation
-      #     dbt run --target dev
+      - name: Run dbt seed 
+        working-directory: ./dbt_transformation
+        run: |
+          dbt seed --target dev
 
-      # - name: Test dbt model
-      #   run: |
-      #     cd dbt_transformation
-      #     dbt test --target dev
-
-      # - name: Run dbt seed 
-      #   run: |
-      #     cd dbt_transformation
-      #     dbt seed --target dev
-
-      # - name: Generate dbt documentation
-      #   run: |
-      #     cd dbt_transformation
-      #     dbt docs generate --target dev
+      - name: Generate dbt documentation
+        working-directory: ./dbt_transformation
+        run: |
+          dbt docs generate --target dev
