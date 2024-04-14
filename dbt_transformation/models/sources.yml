@@ -23,11 +23,10 @@ sources:
           - name: total_price
             tests:
               - dbt_expectations.expect_column_values_to_match_regex:
-                  regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b" 
+                  regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b|Rpnan"
+                  # The table records null value as Rpnan, so we want to skip the test on these values
                   config:
-                  # there are 17 data that contains Rpnan, 
-                  # if the unmatched row <17, the test will result in warning
-                    error_if: ">17"
+                    where: "total_price != 'Rpnan'"
           - name: rating 
             tests: 
               - dbt_expectations.expect_column_values_to_be_between:
