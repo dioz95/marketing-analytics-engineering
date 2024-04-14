@@ -5,8 +5,8 @@ dbt_transformation:
       # dataset: marketing_analytics_dwh
       timeout_seconds: 300
       job_retries: 1
-      # keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
-      keyfile: ../.gcloud/dbt-service-account.json
+      keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
+      # keyfile: ../.gcloud/dbt-service-account.json
       location: EU
       method: service-account
       priority: interactive
