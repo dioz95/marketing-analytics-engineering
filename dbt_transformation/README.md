@@ -1,12 +1,14 @@
 # Data Transformation using DBT
+## Materialization
+## Testing
+## Data pipeline
+### Sources (stagging)
 
-## Sources (stagging)
+### Snapshot for the customer data (SCD Type II)
 
-## Snapshot for the customer data (SCD Type II)
+### Dimensional modelling
 
-## Dimensional modelling
-
-## Metrics creation using semantic layer feature in DBT (dbt metricflow)
+### Metrics creation using semantic layer feature in DBT (dbt metricflow)
 
 ### Using the starter project
 
