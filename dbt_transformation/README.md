@@ -7,6 +7,7 @@ Materializations are strategies for persisting dbt models in a warehouse. There 
 * incremental
 * ephemeral
 * materialized view
+  
 Materialization can be defined either in `dbt_profile.yml` or in the `.sql` mdodel.
 * In the `dbt_profile.yml` materialization is defined under the `models` tag, e.g.:
   ```
