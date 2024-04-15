@@ -22,7 +22,6 @@ Materialization can be defined either in `dbt_profile.yml` or in the `.sql` mdod
   ```
 * In the `.sql` model file materialization can be configured using `{{ config(...) }}`, e.g.:
   ```
-  
   {{
     config(materialized='table')
   }}
