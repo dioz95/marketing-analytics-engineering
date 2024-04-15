@@ -1,4 +1,12 @@
-Welcome to your new dbt project!
+# Data Transformation using DBT
+
+## Sources (stagging)
+
+## Snapshot for the customer data (SCD Type II)
+
+## Dimensional modelling
+
+## Metrics creation using semantic layer feature in DBT (dbt metricflow)
 
 ### Using the starter project
 
