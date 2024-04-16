@@ -41,6 +41,13 @@ Testing in DBT applied on models, sources, snapshots, and seeds. The test can be
 ### Semantic Layer
 Semantic layer is a relatively new feature introduced by DBT to enable consistent and reliable metrics creation. While the fullest capability of the DBT Semantic Layer can be used in the paid version of dbt Cloud, dbt Core users still be able to utilise the most important part of it in [dbt MetricFlow](https://docs.getdbt.com/docs/build/about-metricflow). MetricFlow will help the user to define and manage the logic of your organization's metrics, preventing the confusion caused by multiple interpretations in the metrics calculation. DBT MetricFlow require the semantic model and metrics definition for the data models that have been created.
 ## Data Modeling
+The whole lineage of the data model can be accessed by running
+```bash
+dbt docs serve
+```
+
+<p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/data_lineage.png" width=700/></p>
+
 ### Source (stagging)
 Source in DBT resembles a staging area that enables the user to name and describe the data loaded into Bigquery. Source models are defined inside the `src` directory:
 - `src_customers.sql`: source model for `customers.csv` data
