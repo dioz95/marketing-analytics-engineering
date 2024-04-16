@@ -290,17 +290,29 @@ Lastly to visualize the steps of metrics calculation, `--display-plans` option c
 ```bash
 mf query --metrics total_revenue,count_transactions,count_transacting_customers --group-by metric_time__month,transaction__is_transaction_amount_below_average,product_category_id__product_category --order metric_time__month --start-time 2023-08-01 --end-time 2024-03-01 --display-plans
 ```
+this will produce [SVG file](https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/metics_plan.svg) that describe the query plans.
 
-### Using the starter project
-
-Try running the following commands:
-- dbt run
-- dbt test
-
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+>Note: MetricFlow still does not support complex metrics calculation such as `metrics_customers_recency.sql` that use dynamic window functions to compute the day differences between a customer's last transaction date and last transaction date recorded in the `fct_transactions.sql` model.
+### Data Mart
+End products of the DBT transformation are concluded in two data mart models that will be used to build **Marketing Executive Dashboard** by the Data Analyst/BI:
+- `mart_sales_performance.sql` that contains metrics:
+    - `total_revenue`: sum of revenue gained from the transactions
+    - `count_transactions`: count of transactions
+    - `count_transacting_customers`: count of customers doing transactions
+  that aggregated by these dimensions:
+    - `metric_time__month`: year, month
+    - `transaction__is_transaction_amount_below_average`: sign if a transaction value is above or below the average value of the whole transactions
+    - `product_category_id__product_category`: product category purchased in a transaction
+- `mart_marketing_campaign.sql` that contains metrics:
+    - `total_revenue`: sum of revenue gained from the transactions
+    - `total_marketing_budget`: sum of marketing budget spent for the campaign
+    - `marketing_budget_revenue_ratio`: ratio of marketing budget to the total revenue
+  that aggregated by `month` dimension
+and one data mart that will be used to build **Customer RFM Analysis** by the Data Scientist:
+- `mart_customer_rfm.sql`: that contains metrics:
+    - `customer_recency`: customers' recency metrics
+    - `customer_frequency`: customers' frequency metrics
+    - `customer_monetary`: customers' monetary metrics
+  that aggregated by these dimensions:
+    - `customer_id`: customer id of the transacting customer
+    - `customer_name_hashed`: hashed value of the customer's name
