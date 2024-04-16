@@ -1,6 +1,6 @@
 # CI/CD Implementation
 
-DBT supports CI/CD pipeline like common software development framework. In the early stage of digital transformation, it would be easier to implement the data orchestration through GitHub Actions. The execution workflow is defined on the `python-app.yml` file.
+DBT supports CI/CD pipelines like common software development frameworks. In the early stage of digital transformation, it would be easier to implement the data orchestration through GitHub Actions. The execution workflow is defined on the `python-app.yml` file.
 
 The workflow requires variables that need to be stored as environmental variables such as our project and dataset name, and secret variables such as our Bigquery service account JSON content.
 
@@ -34,4 +34,4 @@ The execution steps are defined as a regular python application workflow. One of
         KEYFILE_CONTENTS: ${{ secrets.DBT_GOOGLE_BIGQUERY_KEYFILE }}
 ```
 
-Here, the Bigquery service account JSON that stored in the secret variable is copied to the temporary folder `./dbt_transformation/.gcloud/`. This variable also needs to be defined in the `profiles.yml`. Once this step is executed successfully, then usually the steps below will be run without obstacles.
+Here, the Bigquery service account JSON that is stored in the secret variable is copied to the temporary folder `./dbt_transformation/.gcloud/`. This variable also needs to be defined in the `profiles.yml`. Once this step is executed successfully, then usually the steps below will be run without obstacles.
