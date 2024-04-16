@@ -52,9 +52,9 @@ These models generally contain some light transformations, for example to conver
 Beside the basic testing scenario that you might already know(`unique`, `non_null`, etc). tests in the source models generally performed to intercept the non-standard value used to capture the data in the production, for example in the `total_price` column, we want the values in this column to match with certain regex (`[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b`). This test scenario available in the dbt Great Expectation packages so we can use it directly in the `sources.yml`:
 ```yaml
 ...
-    tests:
-        - dbt_expectations.expect_column_values_to_match_regex:
-            regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b"
+  - tests:
+    - dbt_expectations.expect_column_values_to_match_regex:
+        regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b"
 ...
 ```
 ### Snapshot for the customer data (SCD Type II)
@@ -285,6 +285,12 @@ GROUP BY
   , product_category_id__product_category
 ORDER BY metric_time__month
 ```
+
+Lastly to visualize the steps of metrics calculation, `--display-plans` option can be added to the MetricFlow command as:
+```bash
+mf query --metrics total_revenue,count_transactions,count_transacting_customers --group-by metric_time__month,transaction__is_transaction_amount_below_average,product_category_id__product_category --order metric_time__month --start-time 2023-08-01 --end-time 2024-03-01 --display-plans
+```
+
 ### Using the starter project
 
 Try running the following commands:
