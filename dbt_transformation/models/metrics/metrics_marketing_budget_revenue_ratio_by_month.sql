@@ -1,5 +1,5 @@
 -- This query is directly taken from MetricsFlow with command (with minor adjustment):
--- mf query --metrics marketing_budget_revenue_ratio group-by metric_time__month --order metric_time__month --start-time 2023-08-01 --end-time 2024-02-01 --explain
+-- mf query --metrics marketing_budget_revenue_ratio group-by --metric_time__month --order metric_time__month --start-time 2023-08-01 --end-time 2024-02-01 --explain
 SELECT
   metric_time__month
   , CAST(total_marketing_budget AS FLOAT64) / CAST(NULLIF(total_revenue, 0) AS FLOAT64) AS marketing_budget_revenue_ratio
