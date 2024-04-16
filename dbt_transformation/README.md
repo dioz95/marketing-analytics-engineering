@@ -47,7 +47,7 @@ dbt docs serve
 ```
 
 <p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/data_lineage.png" width=700/></p>
-<p align="center">Lineage of the data models can be accessed dynamically in the dbt documentation</p>p
+<p align="center"><strong>Fig 1.</strong> Lineage of the data models can be accessed dynamically in the dbt documentation</p>
 
 ### Source (stagging)
 Source in DBT resembles a staging area that enables the user to name and describe the data loaded into Bigquery. Source models are defined inside the `src` directory:
