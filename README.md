@@ -89,7 +89,7 @@ To reproduce this project you should follow this step:
   ```
 3. Create a virtual environment with `python 3.11.x`
 4. Install `requirements.txt` inside the virtual environment
-5. Install `direnv` in your local machine. `direnv` is a shell extension tool to enable using your own `profile.yml` for local development. The installation instruction is available [here] (https://direnv.net/).
+5. Install `direnv` in your local machine. `direnv` is a shell extension tool to enable using your own `profile.yml` for local development. The installation instruction is available [here](https://direnv.net/).
 6. Go to the root directory of the dbt project, in this case `dbt_transformation` folder, and create `.envrc` file:
   ```bash
   export DBT_GOOGLE_PROJECT=<your-bigquery-project-name>
