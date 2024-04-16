@@ -23,7 +23,7 @@ sources:
           - name: total_price
             tests:
               - dbt_expectations.expect_column_values_to_match_regex:
-                  regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b|Rpnan"
+                  regex: "[Rp]{1}(?P<amount>[\\\\d,\\\\.]+(?:\\\\?>\\\\.\\\\d{2}){0,})\\\\b"
                   # The table records null value as Rpnan, so we want to skip the test on these values
                   config:
                     where: "total_price != 'Rpnan'"
