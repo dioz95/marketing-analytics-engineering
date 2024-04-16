@@ -28,7 +28,7 @@ To deliver the request raised by the user, the data consultant decided to go wit
 - Building semantic layer to enforce the metrics consistency and reusability of each metrics
 - Developing data products:
   - Data Analys/Business Intelligence: _Marketing Executive Dashboard_
-  - Data Scientist: Customer RFM (Recency, Frequency, Monetary) Analysis
+  - Data Scientist: _Customer RFM (Recency, Frequency, Monetary) Analysis_
 - Code versioning and workflow orchestration using Git and GitHub Actions
 
 ## Project Structure
@@ -66,9 +66,9 @@ To deliver the request raised by the user, the data consultant decided to go wit
 ├── requirements.txt
 ```
 
-This project is served on 3 main directories:
+This project is served on 4 main directories that you can visit in this order:
 
-- `data` : this folder contains the main spreadsheet used to record the customers, transactions, reviews, and marketing campaign data. These spreadsheets will be loaded to Bigquery as it is to be transformed using DBT on the next stage.
+- `data`: this folder contains the main spreadsheet used to record the customers, transactions, reviews, and marketing campaign data. These spreadsheets will be loaded to Bigquery as it is to be transformed using DBT on the next stage.
 - `dbt_transformation`: this folder is where the analytics engineering practices are performed
   - Data transformation
   - Model testing
@@ -77,3 +77,23 @@ This project is served on 3 main directories:
 - `data_products`: this folder contains the end product produced using the transformed data.
   - Marketing executive dashboard
   - Customer RFM analysis using K-Means clustering method
+- `.github/workflows`: this folder contains `.yml` file for orchestrating the scheduled job to execute the model testing and creation.
+
+## Getting Started
+To reproduce this project you should follow this step:
+1. Create Bigquery account (free tier is enough)
+2. Download the bigquery service account json
+3. Clone this repository
+  ```bash
+  git clone https://github.com/dioz95/marketing-analytics-engineering.git
+  ```
+3. Create a virtual environment with `python 3.11.x`
+4. Install `requirements.txt` inside the virtual environment
+5. Install `direnv` in your local machine. `direnv` is a shell extension tool to enable using your own `profile.yml` for local development. The installation instruction is available [here](https://direnv.net/).
+6. Go to the root directory of the dbt project, in this case `dbt_transformation` folder, and create `.envrc` file:
+  ```bash
+  export DBT_GOOGLE_PROJECT=<your-bigquery-project-name>
+  export DBT_GOOGLE_BIGQUERY_DATASET=<your-bigquery-dataset-name>
+  export DBT_GOOGLE_BIGQUERY_KEYFILE=<your-bigquery-keyfile-json-path>
+  ```
+7. Inside the `dbt_transformation`, run `dbt debug`. If everything is set correctly, `dbt debug` should execute successfully.
