@@ -70,9 +70,9 @@ This project is served on 4 main directories that you can visit in this order:
 
 - `data`: this folder contains the main spreadsheet used to record the customers, transactions, reviews, and marketing campaign data. These spreadsheets will be loaded to Bigquery as it is to be transformed using DBT on the next stage.
 - `dbt_transformation`: this folder is where the analytics engineering practices are performed
-  - Data transformation
+  - Data modelling
   - Model testing
-  - Semantic layer creation
+  - Semantic model creation and metrics definition
   - Data documentation
 - `data_products`: this folder contains the end product produced using the transformed data.
   - Marketing executive dashboard
