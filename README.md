@@ -24,7 +24,7 @@ After several months running their business using quite a traditional approach, 
 - They want to track the changes of their customers' data to detect fraudulent behaviour while still maintain data the privacy protection.
 
 ## Working Process
-<p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/diagram.png" width="850" /></p>
+<p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/diagram.png" /></p>
 <p align="center"><strong>Fig 1.</strong>Data pipeline diagram.</p>
 
 To deliver the request raised by the user, the data consultant decided to go with a non-traditional ELT (Extract, Load, Transform) approach to streamline the data pipeline creation process.
