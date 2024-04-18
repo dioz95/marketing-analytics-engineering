@@ -45,10 +45,6 @@ The whole lineage of the data model can be accessed by running
 ```bash
 dbt docs serve
 ```
-
-<p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/data_lineage.png" width=700/></p>
-<p align="center"><strong>Fig 1.</strong> Lineage of the data models can be accessed dynamically in the dbt documentation</p>
-
 ### Source (stagging)
 Source in DBT resembles a staging area that enables the user to name and describe the data loaded into Bigquery. Source models are defined inside the `src` directory:
 - `src_customers.sql`: source model for `customers.csv` data
@@ -300,7 +296,9 @@ mf query --metrics total_revenue,count_transactions,count_transacting_customers 
 ```
 this will produce [SVG file](https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/metics_plan.svg) that describe the query plans.
 
->Note: MetricFlow still does not support complex metrics calculation such as `metrics_customers_recency.sql` that use dynamic window functions to compute the day differences between a customer's last transaction date and last transaction date recorded in the `fct_transactions.sql` model.
+<p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/metics_plan.svg" width=700/></p>
+<p align="center"><strong>Fig 1.</strong>Query plan of the `mart_sales_performance.sql` model.</p>
+
 ### Data Mart
 End products of the DBT transformation are concluded in two data mart models that will be used to build **Marketing Executive Dashboard** by the Data Analyst/BI:
 - `mart_sales_performance.sql` that contains metrics:
@@ -324,3 +322,6 @@ and one data mart that will be used to build **Customer RFM Analysis** by the Da
   that aggregated by these dimensions:
     - `customer_id`: customer id of the transacting customer
     - `customer_name_hashed`: hashed value of the customer's name
+
+<p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/data_mart_lineage.png" width=700/></p>
+<p align="center"><strong>Fig 2.</strong>Data mart dependencies, from sources to downstream.</p>
