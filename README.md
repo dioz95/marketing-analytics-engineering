@@ -16,6 +16,8 @@ Company X is a new emerging start-up that recently received their first seed fun
 - `Review company`: record customers rating (1 - 5) that represents their perception about company overall services.
   To support their sales performance, they also regularly create monthly marketing campaigns that require a few amount of costs that are recorded in the marketing campaign spreadsheet.
 
+In addition to that, there is one spreadsheet that is managed by the marketing team to record the overall budget spent for their monthly marketing campaigns. 
+
 After several months running their business using quite a traditional approach, now they are thinking of doing digital transformation to their company to be able to compete with their current competitors. To solve this problem, they hire a team from data consultancy company that specifically assigned to work within the marketing team in order to create an automated data pipeline as well as producing end user data products with these specific requirements:
 
 - They work in fast-paced environment, they want the system to be flexible to cope with this working culture.
