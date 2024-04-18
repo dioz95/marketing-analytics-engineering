@@ -23,7 +23,7 @@ After several months running their business using quite a traditional approach, 
 - They work in fast-paced environment, they want the system to be flexible to cope with this working culture.
 - They want a dashboard that automatically updated on the daily basis to present summary about their sales and marketing campaign performance.
 - They want to know the transaction profile of their customer and want to know how this profile can be used to enhance the revenue growth.
-- They want to track the changes of their customers' data to detect fraudulent behaviour while still maintain data the privacy protection.
+- They want to track the changes of their customers' data to detect fraudulent behaviour while still complying to the data privacy protection. 
 
 ## Working Process
 <p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/diagram.png" /></p>
