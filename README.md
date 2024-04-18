@@ -1,6 +1,11 @@
 # Leveraging Best Practices of Analytics Engineering in Marketing Domain: A study case of enterprise digital transformation
+[DBT documentation](https://www.getdbt.com/what-is-analytics-engineering#:~:text=%23-,Analytics%20engineers%20provide%20clean%20data%20sets%20to%20end%20users%2C%20modeling,%2C%20deploying%2C%20and%20documenting%20data.) defined analytics engineers as:
 
-This repo introduces the analytics engineering practices in supporting enterprise digital transformation, particularly within the marketing domain.
+>Analytics engineers provide clean data sets to end users, modeling data in a way that empowers end users to answer their own questions. While a data analyst spends their time analyzing data, an analytics engineer spends their time transforming, testing, deploying, and documenting data. Analytics engineers apply software engineering best practices like version control and continuous integration to the analytics code base.
+
+So, based on this definition, analytics engineering can be inferred as a set of principles and practices that are performed by data professionals (either data analysts, data engineers, or dedicated analytics engineers themselves) to transform, test, deploy, and document the data to produce clean data sets to end users. Analytics engineering essentially should be tools and languages agnostic. However, in the past few years, Data Build Tools (DBT) by dbt Labs started to gain popularity to be a de facto tool to perform analytics engineering practices.
+
+This repo peresnts analytics engineering practices in supporting enterprise digital transformation, in particular within the marketing domain.
 
 ## Problem Statement
 
