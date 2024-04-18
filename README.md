@@ -1,5 +1,5 @@
 # Leveraging Best Practices of Analytics Engineering in Marketing Domain: A study case of enterprise digital transformation
-[DBT documentation](https://www.getdbt.com/what-is-analytics-engineering#:~:text=%23-,Analytics%20engineers%20provide%20clean%20data%20sets%20to%20end%20users%2C%20modeling,%2C%20deploying%2C%20and%20documenting%20data.) defined analytics engineers as:
+[DBT documentation](https://www.getdbt.com/what-is-analytics-engineering#:~:text=%23-,Analytics%20engineers%20provide%20clean%20data%20sets%20to%20end%20users%2C%20modeling,%2C%20deploying%2C%20and%20documenting%20data.) defines analytics engineers as:
 
 >Analytics engineers provide clean data sets to end users, modeling data in a way that empowers end users to answer their own questions. While a data analyst spends their time analyzing data, an analytics engineer spends their time transforming, testing, deploying, and documenting data. Analytics engineers apply software engineering best practices like version control and continuous integration to the analytics code base.
 
