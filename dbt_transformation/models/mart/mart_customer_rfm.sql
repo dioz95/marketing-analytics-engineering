@@ -1,6 +1,6 @@
 SELECT 
   r.customer_id,
-  r.customer_name_hashed,
+  r.customer__customer_name_hashed,
   r.customer_recency,
   f.customer_frequency,
   m.customer_monetary

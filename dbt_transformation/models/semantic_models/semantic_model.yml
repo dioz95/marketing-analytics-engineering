@@ -31,6 +31,10 @@ semantic_models:
         description: The distinct count of product category.
         expr: product_category_id
         agg: COUNT_DISTINCT
+      - name: day_differences_transaction_last_transaction
+        description: The day differences between each transaction and the last transaction.
+        expr: DATE_DIFF(MAX(DATE_ADD(transaction_date, INTERVAL 1 DAY)) OVER(), transaction_date, DAY)
+        agg: SUM
     dimensions:
       - name: transaction_date
         type: time
@@ -43,6 +47,9 @@ semantic_models:
             WHEN total_paid < AVG(total_paid) OVER() THEN 1
             ELSE 0
           END
+      - name: rank_customer_latest_transaction
+        type: categorical 
+        expr: ROW_NUMBER() OVER(PARTITION BY customer_id ORDER BY transaction_date DESC)
   - name: dim_customers
     description: |
       this table represents the updated customers' data (based on the scd_customers model).
