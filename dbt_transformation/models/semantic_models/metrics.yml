@@ -41,3 +41,12 @@ metrics:
     type_params:
       measure: total_paid
       grain_to_date: month
+  - name: customer_recency
+    description: Day differences between the latest transaction of each customer and the latest transaction occured in the fct_transactions 
+    type: SIMPLE 
+    label: Customer Recency 
+    type_params:
+        measure: 
+          name: day_differences_transaction_last_transaction
+    filter: | 
+      {{Dimension('transaction__rank_customer_latest_transaction')}} = 1
