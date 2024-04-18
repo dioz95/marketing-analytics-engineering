@@ -297,7 +297,7 @@ mf query --metrics total_revenue,count_transactions,count_transacting_customers 
 this will produce [SVG file](https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/metics_plan.svg) that describe the query plans.
 
 <p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/metics_plan.svg" width=700/></p>
-<p align="center"><strong>Fig 1.</strong>Query plan of the `mart_sales_performance.sql` model.</p>
+<p align="center"><strong>Fig 1.</strong> Query plan of the `mart_sales_performance.sql` model.</p>
 
 ### Data Mart
 End products of the DBT transformation are concluded in two data mart models that will be used to build **Marketing Executive Dashboard** by the Data Analyst/BI:
@@ -324,4 +324,4 @@ and one data mart that will be used to build **Customer RFM Analysis** by the Da
     - `customer_name_hashed`: hashed value of the customer's name
 
 <p align="center"><img src="https://github.com/dioz95/marketing-analytics-engineering/blob/main/assets/data_mart_lineage.png" width=700/></p>
-<p align="center"><strong>Fig 2.</strong>Data mart dependencies, from sources to downstream.</p>
+<p align="center"><strong>Fig 2.</strong> Data mart dependencies, from sources to downstream.</p>
